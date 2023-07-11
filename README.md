@@ -10,6 +10,23 @@ The following instuctions are extracted from https://github.com/Systems-Modeling
 
 # 2. Clone postgres DB 
 
-docker pull postgres
+$ docker pull postgres
+
+# 3. Build docker image
+$ cd docker_images && docker build . -t sysml-v2-api --progress=plain
+
+# 4. Run docker compose example
+
+FROM the REPO path $ run cd .. if you are inside docker_images folder
+
+$ docker compose up 
+
+# 5. test 
+
+go to localhost:9000/docs/ inside your web browser to check if all works
+
+
+
+
 
 
