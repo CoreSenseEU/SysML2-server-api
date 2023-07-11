@@ -1,0 +1,35 @@
+version: ''
+services:
+  db:
+    image: postgres 
+    container_name: db
+    restart: always
+    network_mode: host
+    # ports:
+    #     - '5432:5432'
+    environment:
+        - POSTGRES_PASSWORD=mysecretpassword
+        - POSTGRES_DB=sysml2
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    # networks:
+    #     - internal_net
+    expose:
+        - 5432
+  sysml2-api:
+    image: sysml-v2-api 
+    container_name: sysml2-api
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    network_mode: host
+    # ports:
+    #   - '9000:9000'
+    depends_on:
+      - "db"
+    # networks:
+    #     - internal_net
+# networks:
+#   internal_net:
+#     driver: overlay 
+    
+# environment:

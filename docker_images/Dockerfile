@@ -1,0 +1,24 @@
+# Ubuntu 22.04 
+FROM ubuntu:22.04
+USER root
+
+RUN apt update -qq && apt install openjdk-11-jdk curl git -y 
+
+# install sbt
+WORKDIR /coursier
+RUN curl https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz -L -o cs-x86_64-pc-linux.gz
+RUN gzip -d cs-x86_64-pc-linux.gz && mv cs-x86_64-pc-linux cs && chmod +x cs && ./cs setup -y 
+
+ENV PATH="${PATH}:/root/.local/share/coursier/bin"
+
+WORKDIR /SysML2_ws
+RUN git clone --depth 1 --branch 2023-02 https://github.com/Systems-Modeling/SysML-v2-API-Services.git
+
+WORKDIR SysML-v2-API-Services
+RUN sbt clean
+
+RUN sbt run; exit 0
+
+ENTRYPOINT sbt run
+
+
