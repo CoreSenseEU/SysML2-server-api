@@ -40,10 +40,20 @@ $ docker volume create postgresdbserver
 ```
 $ docker compose up # add -d for detaching 
 ```
+The server waits until the first request is done for setup. After this it can spend up to 2 minutes in initializing it completely (the first execution even more)
+When the server is ready this prompt will be displayed:
+~~~
+[info] play.api.Play - Application started (Dev) (no global state)
+~~~
+
+
 
 ## 5. Test 
 
-go to http://localhost:9000/docs/ inside your web browser to check if all works
+go to http://localhost:9000/docs/ inside your web browser to check if all works (it can spend up to 2 minutes in initailizing the server)
+
+For futher examples using the API through Jupyter Notebooks refer https://github.com/Systems-Modeling/SysML-v2-API-Cookbook
+
 
 ## 6. Stop execution
 
