@@ -27,7 +27,7 @@ $ docker pull postgres
 ## 3. Build docker image
 
 ```
-$ docker build docker_images/Dockefile -t sysml-v2-api # --progress=plain for verbose stdout
+$ docker build docker_images/Dockerfile -t sysml-v2-api # --progress=plain for verbose stdout
 ```
 
 ## 4. Create Volume for store database
