@@ -20,42 +20,54 @@ cd SysML2-server-api
 
 ## 2. Clone postgres DB 
 
+For downloading the postgres docker image run:
+
 ```
-$ docker pull postgres
+docker pull postgres
 ```
 
 ## 3. Build docker image
+
+Then the SysML2 API Server image has to be build. For building it run:
 
 ```
 $ docker build ./docker_images -t sysml-v2-api # --progress=plain for verbose stdout
 ```
 
 ## 4. Create Volume for store database
+In order to store the database in a persistent way a docker volume has to be created:
+
 ```
 $ docker volume create postgresdbserver
 ```
 
-## 4. Run docker compose 
+For deleting it you can run:
 
+```
+$ docker volume rm postgresdbserver
+``` 
+
+# Run the SysML2 API Server 
+
+For running the SysML2 API Server a docker compose is used for starting all the containers toguether:
 ```
 $ docker compose up # add -d for detaching 
 ```
+
 The server waits until the first request is done for setup. After this it can spend up to 2 minutes in initializing it completely (the first execution even more)
 When the server is ready this prompt will be displayed:
 ~~~
 [info] play.api.Play - Application started (Dev) (no global state)
 ~~~
 
-
-
-## 5. Test 
+# Testing the API 
 
 go to http://localhost:9000/docs/ inside your web browser to check if all works (it can spend up to 2 minutes in initailizing the server)
 
 For futher examples using the API through Jupyter Notebooks refer https://github.com/Systems-Modeling/SysML-v2-API-Cookbook
 
 
-## 6. Stop execution
+# Stop execution
 
 For closing the compose when running in detach mode:
 
