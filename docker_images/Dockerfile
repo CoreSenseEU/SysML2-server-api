@@ -36,7 +36,7 @@ RUN wget -q https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${S
 
 ## Defining the RELEASE down here ensures that the previous comamnds can
 ## be recycled since they're not affected by the release version.
-ARG RELEASE=2023-02
+ARG RELEASE=2024-07
 
 RUN wget -q https://github.com/Systems-Modeling/SysML-v2-API-Services/archive/${RELEASE}.tar.gz?ts=20220819Z020300+00 -O ${RELEASE}.tar.gz
 
