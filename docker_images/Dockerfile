@@ -1,6 +1,6 @@
 #Dockerfile obtained from https://github.com/gorenje/sysmlv2-jupyter-docker
 
-FROM openjdk:11-slim
+FROM eclipse-temurin:11-jdk-jammy
 
 ##
 ## This Dockerfile setups the SysML v2 API server and is designed to be
